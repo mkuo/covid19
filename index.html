@@ -1,12 +1,53 @@
 <!DOCTYPE html>
 <html>
-<head>
-<title>Page Title</title>
-</head>
-<body>
-
-<h1>This is a Heading</h1>
-<p>This is a paragraph.</p>
-
-</body>
+    <head>
+        <title>SF COVID-19</title>
+        <link rel="icon" href="favicon.ico">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="styles.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/4.1.2/papaparse.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+        <script src="scripts.js"></script>
+    </head>
+    <body class="mx-auto my-4 text-center">
+        <h1>COVID-19 in San Francisco</h1>
+        <p id="headline" class="my-0">Are we flattening the curve? See for yourself using publicly available data.</p>
+        <h2 class="mt-4">Cases</h2>
+        <div class="chart mx-auto"><canvas id="chart-cases"></canvas></div>
+        <h2 class="mt-4">Deaths</h2>
+        <div class="chart mx-auto"><canvas id="chart-deaths"></canvas></div>
+        <h2 class="mt-4">Data</h2>
+        <table id="data-table" class="table table-sm">
+            <thead>
+                <tr>
+                    <th scope="col">Date</th>
+                    <th scope="col">New Cases</th>
+                    <th scope="col">New Deaths</th>
+                    <th scope="col">Total Cases</th>
+                    <th scope="col">Total Deaths</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+        <h3 class="mt-4">Data sources</h3>
+        <p class="my-0">
+            <a href="https://www.sfdph.org/dph/alerts/coronavirus.asp">https://www.sfdph.org/dph/alerts/coronavirus.asp</a>
+        </p>
+        <p class="my-0">
+            <a href="https://www.nbcbayarea.com/news/coronavirus/list-of-coronavirus-cases-in-the-bay-area/">https://www.nbcbayarea.com/news/coronavirus/list-of-coronavirus-cases-in-the-bay-area/</a>
+        </p>
+        <p class="my-0">
+            <a href="https://projects.sfchronicle.com/2020/coronavirus-map/">https://projects.sfchronicle.com/2020/coronavirus-map/</a>
+        </p>
+        <div class="mt-4">
+            <p class="my-0">
+                <small class="text-muted">Access or contribute to the source code and data for this project on Github <a href="https://github.com/mkuo/covid19">here</a>.</small>
+            </p>
+            <p class="my-0">
+                <small class="text-muted">Email me at <a href="mailto:mcykuo@gmail.com">mcykuo@gmail.com</a>.</small>
+            </p>
+        </div>
+    </body>
 </html>
