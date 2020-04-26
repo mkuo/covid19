@@ -7,5 +7,9 @@ You can find the source data in [san-francisco.csv](san-francisco.csv).
 
 # Local development
 You must serve the csv files for your development environment, i.e. by running
-`python -m SimpleHTTPServer 8888 &` and then accessing http://localhost:8888/
+```
+python -m SimpleHTTPServer 8888 &  # python2
+python -m http.server 8888 &  # python3
+```
+and then accessing http://localhost:8888/
 in your browser.

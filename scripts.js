@@ -18,9 +18,6 @@ const parseCsv = async (fileName) => {
 
 // populate data in table
 const populateTable = (data) => {
-    data.sort((a, b) => {
-        return b.date - a.date
-    })
     data.forEach((d, idx) => {
         // add color for striped rows
         const background = idx % 2 == 0 ? 'bg-light' : 'bg-white'
@@ -94,7 +91,8 @@ const drawChart = (element, y0, y1, data) => {
                 xAxes: [{
                     type: 'time',
                     time: {
-                        tooltipFormat: 'ddd M/D'
+                        tooltipFormat: 'ddd M/D',
+                        unit: 'day'
                     },
                     scaleLabel: {
                         display: true,
@@ -140,9 +138,27 @@ const updateLastUpdated = (data) => {
     headline.insertAdjacentHTML('afterend', html);
 }
 
+// sort and calculate incrementals
+const parseData = (data) => {
+    data.sort((a, b) => {
+        return b.date - a.date
+    })
+    data.forEach((d, idx) => {
+        var previousTotalCases = 0
+        var previousTotalDeaths = 0
+        if (idx < data.length - 1) {
+            previousTotalCases = data[idx + 1].total_cases
+            previousTotalDeaths = data[idx + 1].total_deaths
+        }
+        d.new_cases = d.total_cases - previousTotalCases
+        d.new_deaths = d.total_deaths - previousTotalDeaths
+    });
+}
+
 // populate data from csv to webpage
 const populateCsv = async (fileName) => {
     const data = await parseCsv(fileName);
+    parseData(data)
     updateLastUpdated(data);
     drawChart('chart-cases', 'total_cases', 'new_cases', data);
     drawChart('chart-deaths', 'total_deaths', 'new_deaths', data);
